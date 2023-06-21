@@ -14,6 +14,7 @@ public class DataPersistenceManager : MonoBehaviour
     public int BestScore;
 
     public string PlayerName;
+    public string BestScoreName;
     private string input;
     public TextMeshProUGUI PlayerNameText;
     public TextMeshProUGUI BestScoreTest;
@@ -41,6 +42,7 @@ public class DataPersistenceManager : MonoBehaviour
     class SaveName
     {
         public string PlayerName;
+        public string BestScoreName;
         public TextMeshProUGUI PlayerNameText;
         //public Text BestScoreTextMenu;
         public TextMeshProUGUI BestScoreTest;
@@ -59,11 +61,9 @@ public class DataPersistenceManager : MonoBehaviour
         SaveName data = new SaveName();
         data.PlayerName = PlayerName;
 
+        //if (BestScore > data.BestScore)
         data.BestScore = BestScore;
-
-        // IF MainManager m_Points > BestScore
-        // BestScoreName = PlayerName
-        // save
+        data.BestScoreName = BestScoreName;
 
         int buildIndex = SceneManager.GetActiveScene().buildIndex;
         switch (buildIndex)
@@ -95,8 +95,11 @@ public class DataPersistenceManager : MonoBehaviour
             PlayerNameText.text = PlayerName;
 
             BestScore = data.BestScore;
-            BestScoreTest.text = "Best Score: " + PlayerNameText.text + " " + BestScore;
+            BestScoreName = data.BestScoreName;
+
+            BestScoreTest.text = "Score: " + BestScoreName + " " + BestScore;
 
         }
     }
+
 }

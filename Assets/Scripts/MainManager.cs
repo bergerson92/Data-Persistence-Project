@@ -58,11 +58,12 @@ public class MainManager : MonoBehaviour
         }
         else if (m_GameOver)
         {
-            UpdateBestScore();
             if (m_Points > DataPersistenceManager.Instance.BestScore)
             {
-                DataPersistenceManager.Instance.SaveData();
+                UpdateHighScore();
             }
+
+            ShowBestScore();
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -85,20 +86,15 @@ public class MainManager : MonoBehaviour
 
     public void ShowBestScore()
     {
-        BestScoreText.text = "Best Score: " + DataPersistenceManager.Instance.PlayerName + " " + DataPersistenceManager.Instance.BestScore;
-
+        BestScoreText.text = "Score: " + DataPersistenceManager.Instance.BestScoreName + " " + DataPersistenceManager.Instance.BestScore;
     }
 
-    public void UpdateBestScore()
+    public void UpdateHighScore()
     {
-        if (m_Points > DataPersistenceManager.Instance.BestScore)
-        {
-            BestScoreText.text = "Best Score: " + DataPersistenceManager.Instance.PlayerName + " " + DataPersistenceManager.Instance.BestScore;
-        }
+        DataPersistenceManager.Instance.BestScore = m_Points;
+        DataPersistenceManager.Instance.BestScoreName = DataPersistenceManager.Instance.PlayerName;
+        DataPersistenceManager.Instance.SaveData();
+        DataPersistenceManager.Instance.LoadData();
     }
-
-    // If m_Points > BestScore
-    // update BestScoreName
-    //BestScoreName = Playername
 
 }
