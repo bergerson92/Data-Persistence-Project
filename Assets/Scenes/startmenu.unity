@@ -1075,6 +1075,7 @@ MonoBehaviour:
   BestScoreTextMenu: {fileID: 1097890328}
   BestScore: 0
   PlayerName: Stefan
+  BestScoreName: 
   PlayerNameText: {fileID: 1127464291}
   BestScoreTest: {fileID: 1954585214}
 --- !u!4 &1505869803

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class MainManager : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class MainManager : MonoBehaviour
     private bool m_Started = false;
     private int m_Points;
 
-    private bool m_GameOver = false;
+    public bool m_GameOver = false;
 
     void Start()
     {
@@ -41,7 +42,7 @@ public class MainManager : MonoBehaviour
         // get name und score from DatapersistenceManager Instance
     }
 
-    private void Update()
+    public void Update()
     {
         if (!m_Started)
         {

@@ -33,7 +33,6 @@ public class DataPersistenceManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-
         LoadData();
     }
 
@@ -102,4 +101,38 @@ public class DataPersistenceManager : MonoBehaviour
         }
     }
 
+    public void GetPlayerName()
+    {
+        GameObject canvasObject = GameObject.Find("Canvas");
+        Debug.Log(canvasObject.name);
+
+        GameObject firstChildObject = canvasObject.transform.GetChild(0).gameObject;
+        Debug.Log("found gameobject");
+
+
+        GameObject nestedChildObject = firstChildObject.transform.GetChild(0).gameObject;
+
+        //int lastChildIndex = nestedChildObject.transform.childCount - 1;
+        //GameObject lastChildObject = nestedChildObject.transform.GetChild(0).gameObject;
+        GameObject placeholderObject = nestedChildObject.transform.Find("Placeholder").gameObject;
+
+        PlayerNameText = placeholderObject.GetComponent<TextMeshProUGUI>();
+        Debug.Log("Playername");
+
+        if (PlayerNameText.text != null)
+        {
+            Debug.Log("TextMeshProUGUI text: " + PlayerNameText.text);
+        }
+        else
+        {
+            Debug.Log("TextMeshProUGUI component not found on the last child object.");
+        }
+
+        //PlayerNameText = textMeshProUGUI;
+    }
+
+    public void DestroyThis()
+    {
+        Destroy(gameObject);
+    }
 }
